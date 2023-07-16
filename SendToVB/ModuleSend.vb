@@ -7,7 +7,7 @@ Module ModuleSend
     ' RFC 821 - SIMPLE MAIL TRANSFER PROTOCOL https://www.rfc-editor.org/rfc/rfc821#page-4
 
 
-    Public MaxBodyLength = 1024 ' Max length of body text in characters
+    Public MaxBodyLength = 1023 ' Max length of body text in characters
     Public Function Split(ByVal expression As String, ByVal delimiter As String, ByVal qualifier As String, ByVal ignoreCase As Boolean) As String()
         ' Based on the work of LSteinle
         ' http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx?fid=336054&select=1797240&fr=1#xx0xx
