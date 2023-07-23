@@ -15,7 +15,7 @@ Internally it automatically uses  **MAPI functions**  when it has to send emails
 
 After 11 years, I decided to make it available as **Open Source**. 
 
-**SendToVB** is partly based on code from two developers.
+**SendToVB** is partly based on code of two developers.
 
 Based on the work of **David M Brooks**   
 See: http://www.codeproject.com/KB/IP/SendFileToNET.aspx
