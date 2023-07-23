@@ -1,52 +1,28 @@
 Imports System.IO
 
-Module ModuleSend
+Module SendToVB
+    '---------------------------------------------------------------------------------------------------
     ' SendToVB Vers.1.0 - 2012 by IT-manager's Life.
     ' Programmatically send emails with attachments using the default email client
     ' https://itmanagerslife.blogspot.com/2011/12/send-attachment-with-default-email.html
-    ' It need .NET Framework 2.0 installed
+    ' It need .NET Framework 2.0 (or higher)  installed
     '
-    ' Based on the work of David M Brooks
-    ' http://www.codeproject.com/KB/IP/SendFileToNET.aspx
-    ' Based on the work of LSteinle
-    ' http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx
-    '  
+    ' Based on the work of David M Brooks (Module_SendFileTo.vb)
+    ' See: http://www.codeproject.com/KB/IP/SendFileToNET.aspx
+    '
+    ' Based on the work of Larry Steinle (Module_Split.vb)
+    ' See:  http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx
+    '
+    ' Reference: 
     ' RFC 821 - SIMPLE MAIL TRANSFER PROTOCOL https://www.rfc-editor.org/rfc/rfc821#page-4
-
+    '---------------------------------------------------------------------------------------------------
 
     Public MaxBodyLength = 1023 ' Max length of body text in characters
-    Public Function Split(ByVal expression As String, ByVal delimiter As String, ByVal qualifier As String, ByVal ignoreCase As Boolean) As String()
-        ' Based on the work of LSteinle
-        ' http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx?fid=336054&select=1797240&fr=1#xx0xx
-
-        Dim _QualifierState As Boolean = False
-        Dim _StartIndex As Integer = 0
-        Dim _Values As New System.Collections.ArrayList
-
-        For _CharIndex As Integer = 0 To expression.Length - 1
-            If Not qualifier Is Nothing AndAlso String.Compare(expression.Substring(_CharIndex, qualifier.Length), qualifier, ignoreCase) = 0 Then
-                _QualifierState = Not _QualifierState
-            ElseIf Not _QualifierState AndAlso Not delimiter Is Nothing AndAlso String.Compare(expression.Substring(_CharIndex, delimiter.Length), delimiter, ignoreCase) = 0 Then
-                _Values.Add(expression.Substring(_StartIndex, _CharIndex - _StartIndex))
-                _StartIndex = _CharIndex + 1
-            End If
-        Next
-
-        If _StartIndex < expression.Length Then _Values.Add(expression.Substring(_StartIndex, expression.Length - _StartIndex))
-
-        Dim _returnValues(_Values.Count - 1) As String
-        _Values.CopyTo(_returnValues)
-        Return _returnValues
-    End Function
-
-    ' Based on the work of David M Brooks
-    ' http://www.codeproject.com/KB/IP/SendFileToNET.aspx
 
     Sub Main()
         'Environment.GetCommandLineArgs()
         Dim argc As Integer
         Dim argv As System.Collections.ObjectModel.ReadOnlyCollection(Of String)
-
 
         argv = My.Application.CommandLineArgs
         argc = argv.Count
@@ -87,7 +63,6 @@ Module ModuleSend
             'Console.SetWindowSize(1, 1)
         End If
 
-
         Dim i As Integer = 0
         Dim n As Integer = 0
         Dim ibody As Integer = -1
@@ -111,7 +86,6 @@ Module ModuleSend
         Dim vText As String = ""
 
         Dim CurrentPath As String = Directory.GetCurrentDirectory()
-
 
 
         '------------------------------------------------------------------------------------------------------------------------------------------------
@@ -298,9 +272,3 @@ Module ModuleSend
     End Sub
 
 End Module
-
-
-
-
-
-
