@@ -1,16 +1,16 @@
 Imports System.IO
 
 Module ModuleSend
-    ' SendToVB Vers.1.0 - Freeware 2012 by IT-manager's Life.
+    ' SendToVB Vers.1.0 - 2012 by IT-manager's Life.
     ' Programmatically send emails with attachments using the default email client
     ' https://itmanagerslife.blogspot.com/2011/12/send-attachment-with-default-email.html
     ' It need .NET Framework 2.0 installed
+    '
     ' Based on the work of David M Brooks
     ' http://www.codeproject.com/KB/IP/SendFileToNET.aspx
     ' Based on the work of LSteinle
     ' http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx
     '  
-
     ' RFC 821 - SIMPLE MAIL TRANSFER PROTOCOL https://www.rfc-editor.org/rfc/rfc821#page-4
 
 
@@ -58,7 +58,7 @@ Module ModuleSend
             Console.WriteLine(Product)
             Console.WriteLine("IT-manager's Life: https://itmanagerslife.blogspot.com")
             Console.WriteLine("Programmatically send emails with attachments using the default email client")
-            Console.WriteLine("It need .NET Framework 2.0 installed")
+            Console.WriteLine("It need .NET Framework 2.0 (or higher) installed")
             'Console.WriteLine("")
             Console.WriteLine("USAGE1: SendToVB.exe -files <file1> -body <text> -to <address> -subject <text>")
             Console.WriteLine(" -files <file1> <file2> ... Attach multiple files separating by a space")
@@ -84,7 +84,6 @@ Module ModuleSend
         Else
             'Console.WindowHeight = 1
             'Console.WindowWidth = 1
-
             'Console.SetWindowSize(1, 1)
         End If
 
@@ -291,16 +290,12 @@ Module ModuleSend
 
     End Sub
 
-
     Sub Verbose(ByVal iverbose As Integer, ByVal vText As String, ByVal Totext As String, ByVal SubjectText As String, ByVal BodyText As String)
         If iverbose > -1 Then
             Console.WriteLine("to: " & Totext & vbCrLf & "subject: " & SubjectText & vbCrLf & "body: " & BodyText & vbCrLf)
             Console.WriteLine(vText)
         End If
     End Sub
-
-
-
 
 End Module
 
