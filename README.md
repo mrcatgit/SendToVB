@@ -9,13 +9,13 @@ You can use the tool **SendToVB,** a small **command line**  utility software, t
 **How to use it**
 For instructions see the blog page of **IT-manager's Life:**  https://itmanagerslife.blogspot.com/2011/12/send-attachment-with-default-email.html
 
-**SendToVB** was born in 2011 for internal needs.  
+**SendToVB** was born in 2012 for internal needs.  
 It was coded in  **Visual Basic.NET 2005** and requires the installation of  **[.NET Framework 2.0 runtime or higher]**  which is often installed on new PCs. 
 Internally it automatically uses  **MAPI functions**  when it has to send emails  **with attachments**, and use the command **mailto** to send email  **without attachments**.
 
-After 12 years, I decided to make it available as **Open Source**. 
+After 11 years, I decided to make it available as **Open Source**. 
 
-**SendToVB** is partly based on code from two developers.
+**SendToVB** is partly based on code of two developers.
 
 Based on the work of **David M Brooks**   
 See: http://www.codeproject.com/KB/IP/SendFileToNET.aspx
@@ -24,3 +24,7 @@ His article, along with any associated source code and files, is licensed under 
 Based on the work of **Larry Steinle**
 See: http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx
 His article, along with any associated source code and files, is licensed under **The Code Project Open License (CPOL)** https://www.codeproject.com/info/cpol10.aspx
+
+
+<a href='https://ko-fi.com/mrcatgit' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+
