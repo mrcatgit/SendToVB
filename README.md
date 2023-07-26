@@ -26,12 +26,5 @@ See: http://www.codeproject.com/KB/dotnet/TextQualifyingSplit.aspx
 His article, along with any associated source code and files, is licensed under **The Code Project Open License (CPOL)** https://www.codeproject.com/info/cpol10.aspx
 
 
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('mrcatgit', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#00b9fe',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script> 
+<a href='https://ko-fi.com/mrcatgit' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+
