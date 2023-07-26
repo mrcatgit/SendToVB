@@ -5,7 +5,7 @@ Module SendToVB
     ' SendToVB Vers.1.0 - 2012 by IT-manager's Life.
     ' Programmatically send emails with attachments using the default email client
     ' https://itmanagerslife.blogspot.com/2011/12/send-attachment-with-default-email.html
-    ' It need .NET Framework 2.0 (or higher)  installed
+    ' It need .NET Framework 2.0 (or higher) installed
     '
     ' Based on the work of David M Brooks (Module_SendFileTo.vb)
     ' See: http://www.codeproject.com/KB/IP/SendFileToNET.aspx
