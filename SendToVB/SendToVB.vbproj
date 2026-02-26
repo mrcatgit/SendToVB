@@ -82,7 +82,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>443242EC41E1A71DFD848493E0CE39C3DE859E6E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0F06FFFEE9624FBF0063E1288C737EE48B8955E9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>SendToVB_TemporaryKey.pfx</ManifestKeyFile>
@@ -140,6 +140,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="SendToVB_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

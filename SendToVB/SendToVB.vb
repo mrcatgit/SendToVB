@@ -237,29 +237,88 @@ Module SendToVB
 
         Call Verbose(iverbose, vText, ToText, SubjectText, BodyText)
 
-        If imailto > -1 Or n = 0 Then
-            Dim CarbonCopy As String = ""
-            If Len(CCText) > 0 Then
-                CarbonCopy = CarbonCopy & "cc=" & CCText & "&"
+        'If imailto > -1 Or n = 0 Then
+        '    Dim CarbonCopy As String = ""
+        '    If Len(CCText) > 0 Then
+        '        CarbonCopy = CarbonCopy & "cc=" & CCText & "&"
+        '    End If
+        '    If Len(BCCText) > 0 Then
+        '        CarbonCopy = CarbonCopy & "bcc=" & BCCText & "&"
+        '    End If
+        '    System.Diagnostics.Process.Start("mailto:" & ToText & "?" & CarbonCopy & "subject=" & SubjectText & "&body=" & BodyText) ' & "&attachment=c:\readme.txt"
+        'Else
+        '    Dim mapi As New SendFileTo.MAPI
+
+        '    For Each SingleFileAttach As String In ListFileAttach
+        '        mapi.AddAttachment(SingleFileAttach)    'mapi.AddAttachment("c:\\temp\\file1.txt")
+        '    Next
+        '    mapi.AddRecipientTo(ToText)  'mapi.AddRecipientTo("person2@somewhere.com")
+        '    If Len(CCText) > 0 Then
+        '        mapi.AddRecipientCC(CCText) ' Carbon Copy
+        '    End If
+        '    If Len(BCCText) > 0 Then
+        '        mapi.AddRecipientBCC(BCCText) ' BLIND Carbon Copy
+        '    End If
+        '    mapi.SendMailPopup(SubjectText, BodyText)
+        'End If
+
+        If imailto >= 0 OrElse n = 0 Then
+
+            Dim query As String = ""
+
+            If CCText IsNot Nothing AndAlso CCText.Trim() <> "" Then
+                query &= "cc=" & Uri.EscapeDataString(CCText) & "&"
             End If
-            If Len(BCCText) > 0 Then
-                CarbonCopy = CarbonCopy & "bcc=" & BCCText & "&"
+
+            If BCCText IsNot Nothing AndAlso BCCText.Trim() <> "" Then
+                query &= "bcc=" & Uri.EscapeDataString(BCCText) & "&"
             End If
-            System.Diagnostics.Process.Start("mailto:" & ToText & "?" & CarbonCopy & "subject=" & SubjectText & "&body=" & BodyText) ' & "&attachment=c:\readme.txt"
+
+            If SubjectText IsNot Nothing AndAlso SubjectText.Trim() <> "" Then
+                query &= "subject=" & Uri.EscapeDataString(SubjectText) & "&"
+            End If
+
+            If BodyText IsNot Nothing AndAlso BodyText.Trim() <> "" Then
+                query &= "body=" & Uri.EscapeDataString(BodyText)
+            End If
+
+            ' Rimuove eventuale & finale
+            If query.EndsWith("&") Then
+                query = query.Substring(0, query.Length - 1)
+            End If
+
+            Dim mailtoUrl As String = "mailto:" & ToText
+
+            If query <> "" Then
+                mailtoUrl &= "?" & query
+            End If
+
+            System.Diagnostics.Process.Start(mailtoUrl)
+
         Else
+
             Dim mapi As New SendFileTo.MAPI
 
-            For Each SingleFileAttach As String In ListFileAttach
-                mapi.AddAttachment(SingleFileAttach)    'mapi.AddAttachment("c:\\temp\\file1.txt")
-            Next
-            mapi.AddRecipientTo(ToText)  'mapi.AddRecipientTo("person2@somewhere.com")
-            If Len(CCText) > 0 Then
-                mapi.AddRecipientCC(CCText) ' Carbon Copy
+            If ListFileAttach IsNot Nothing Then
+                For Each singleFileAttach As String In ListFileAttach
+                    If singleFileAttach IsNot Nothing AndAlso singleFileAttach.Trim() <> "" Then
+                        mapi.AddAttachment(singleFileAttach)
+                    End If
+                Next
             End If
-            If Len(BCCText) > 0 Then
-                mapi.AddRecipientBCC(BCCText) ' BLIND Carbon Copy
+
+            mapi.AddRecipientTo(ToText)
+
+            If CCText IsNot Nothing AndAlso CCText.Trim() <> "" Then
+                mapi.AddRecipientCC(CCText)
             End If
+
+            If BCCText IsNot Nothing AndAlso BCCText.Trim() <> "" Then
+                mapi.AddRecipientBCC(BCCText)
+            End If
+
             mapi.SendMailPopup(SubjectText, BodyText)
+
         End If
 
     End Sub
